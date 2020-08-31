@@ -1,8 +1,21 @@
 ## React JWT Authentication (without Redux) example
 
 For more detail, please visit:
+> [React (without Redux) JWT Authentication & Authorization example](https://bezkoder.com/react-jwt-auth/)
 
-> [React JWT Authentication & Authorization example](https://bezkoder.com/react-jwt-auth/)
+> [React Redux JWT Authentication & Authorization example](https://bezkoder.com/react-redux-jwt-auth/)
+
+Related Posts:
+> [In-depth Introduction to JWT-JSON Web Token](https://bezkoder.com/jwt-json-web-token/)
+
+> [React.js CRUD example to consume Web API](https://bezkoder.com/react-crud-web-api/)
+
+> [React File Upload with Axios and Progress Bar to Rest API](https://bezkoder.com/react-file-upload-axios/)
+
+Fullstack (JWT Authentication & Authorization example):
+> [React + Spring Boot](https://bezkoder.com/spring-boot-react-jwt-auth/)
+
+> [React + Node.js Express](https://bezkoder.com/react-express-authentication-jwt/)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
