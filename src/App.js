@@ -148,11 +148,13 @@ class App extends Component {
                 Feeds
               </Link>
             </li>
+            {currentUser && (
             <li className="nav-item">
               <Link to={"/post"} className="nav-link">
                 Add Post
               </Link>
             </li>
+            )}
 
             {showModeratorBoard && (
               <li className="nav-item">

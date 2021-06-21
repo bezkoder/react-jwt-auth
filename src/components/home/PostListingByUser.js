@@ -89,9 +89,9 @@ const Featured = props => (
              <BH3 mb="0" style={style.h}>
                <BA text="dark" href="#">{feature.title}</BA>
              </BH3>
-             <BDiv text="muted" mb="1">Nov 11</BDiv>
+             <BDiv text="muted" mb="1">{feature.published}</BDiv>
              <Card.Text mb="auto">
-               {feature.content}
+               {feature.content.substring(0,20)}...
              </Card.Text>
              <a href={'/p/'+feature._id}>Continue reading</a>
            </Card.Body>

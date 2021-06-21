@@ -95,7 +95,7 @@ const Featured = props => (
              <BH3 mb="0" style={style.h}>
                <BA text="dark" href="#">{feature.title}</BA>
              </BH3>
-             <BDiv text="muted" mb="1">{Date.parse(feature.published)}</BDiv>
+             <BDiv text="muted" mb="1">{feature.published}</BDiv>
              <Card.Text mb="auto">
                {feature.content.substring(0,20)}...
              </Card.Text>
