@@ -99,7 +99,7 @@ const PlayfairDisplay = props => (
 )
 const Footer = props => (
   <footer style={style.footer}>
-    <p>Halifax Times, 2021<a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+    <p>The Explorer Post, 2021</p>
     <p>
       <a href="#home">Back to top</a>
     </p>
