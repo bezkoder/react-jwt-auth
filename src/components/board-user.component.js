@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import UserService from "../services/user.service";
+import PostListingByUser from "./home/PostListingByUser";
 
 export default class BoardUser extends Component {
   constructor(props) {
@@ -12,6 +13,7 @@ export default class BoardUser extends Component {
   }
 
   componentDidMount() {
+    
     UserService.getUserBoard().then(
       response => {
         this.setState({
@@ -32,10 +34,12 @@ export default class BoardUser extends Component {
   }
 
   render() {
+    const { match: { params } } = this.props;
     return (
       <div className="container">
         <header className="jumbotron">
           <h3>{this.state.content}</h3>
+          <PostListingByUser username={params.id} />
         </header>
       </div>
     );

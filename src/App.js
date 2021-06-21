@@ -2,7 +2,12 @@ import React, { Component } from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-
+import  {
+  Row,
+  Col,
+  BHeader,
+  BA,
+} from 'bootstrap-4-react';
 import AuthService from "./services/auth.service";
 
 import Login from "./components/login.component";
@@ -12,6 +17,94 @@ import Profile from "./components/profile.component";
 import BoardUser from "./components/board-user.component";
 import BoardModerator from "./components/board-moderator.component";
 import BoardAdmin from "./components/board-admin.component";
+import AddPost from "./components/home/NewPost";
+import Edit from "./components/home/PostDetails";
+const style = {
+  h: {
+    fontFamily: '"Playfair Display", Georgia, "Times New Roman", serif'
+  },
+  header: {
+    lineHeight: '1',
+    logo: {
+      fontFamily: '"Playfair Display", Georgia, "Times New Roman", serif',
+      fontSize: '2.25rem'
+    }
+  },
+  navigator: {
+    position: 'relative',
+    zIndex: '2',
+    height: '2.75rem',
+    overflowY: 'hidden'
+  },
+  jumbovision: {
+    header: {
+      fontFamily: '"Playfair Display", Georgia, "Times New Roman", serif',
+      fontSize: '3rem'
+    }
+  },
+  featured: {
+    card: {
+      height: '250px',
+      image: {
+        borderRadius: '0 3px 3px 0'
+      }
+    }
+  },
+  blog: {
+    post: {
+      marginBottom: '4rem',
+      title: {
+        fontFamily: '"Playfair Display", Georgia, "Times New Roman", serif',
+        fontSize: '2.5rem',
+        marginBottom: '0.25rem'
+      },
+      meta: {
+        marginBottom: '1.25rem',
+        color: '#999'
+      }
+    },
+    pagination: {
+      marginBottom: '4rem',
+      button: {
+        borderRadius: '2rem'
+      }
+    }
+  },
+  footer: {
+    padding: '2.5rem 0',
+    color: '#999',
+    textAlign: 'center',
+    backgroundColor: '#f9f9f9',
+    borderTop: '.05rem solid #e5e5e5'
+  }
+}
+const Header = props => (
+  <BHeader className="sticky-top" py="3" style={style.header}>
+    <Row flex="nowrap" justifyContent="between" alignItems="center">
+      {/* <Col col="4" pt="1">
+        <BA text="muted" href="#">Subscribe</BA>
+      </Col> */}
+      <Col justifyContent="center" alignItems="center" text="center">
+        <BA text="dark" href="#" style={style.header.logo}>The Explorer Post</BA>
+      </Col>
+      {/* <Col col="4" display="flex" justifyContent="end" alignItems="center">
+        <BA text="muted" href="#"><SearchIcon /></BA>
+        <Button sm outline secondary>Sign up</Button>
+      </Col> */}
+    </Row>
+  </BHeader>
+)
+const PlayfairDisplay = props => (
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet" />
+)
+const Footer = props => (
+  <footer style={style.footer}>
+    <p>Halifax Times, 2021<a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+    <p>
+      <a href="#home">Back to top</a>
+    </p>
+  </footer>
+)
 
 class App extends Component {
   constructor(props) {
@@ -46,14 +139,18 @@ class App extends Component {
 
     return (
       <div>
-        <nav className="navbar navbar-expand navbar-dark bg-dark">
-          <Link to={"/"} className="navbar-brand">
-            bezKoder
-          </Link>
+        <Header/>
+        <PlayfairDisplay/>
+        <nav className="navbar navbar-expand sticky-top navbar-dark bg-dark">
           <div className="navbar-nav mr-auto">
             <li className="nav-item">
-              <Link to={"/home"} className="nav-link">
-                Home
+              <Link to={"/feeds"} className="nav-link">
+                Feeds
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"/post"} className="nav-link">
+                Add Post
               </Link>
             </li>
 
@@ -114,15 +211,18 @@ class App extends Component {
 
         <div className="container mt-3">
           <Switch>
-            <Route exact path={["/", "/home"]} component={Home} />
+            <Route exact path={["/", "/feeds"]} component={Home} />
+            <Route exact path="/post" component={AddPost} />
+            <Route exact path="/p/:id" component={Edit} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/profile" component={Profile} />
-            <Route path="/user" component={BoardUser} />
+            <Route path="/user/:id" component={BoardUser} />
             <Route path="/mod" component={BoardModerator} />
             <Route path="/admin" component={BoardAdmin} />
           </Switch>
         </div>
+        <Footer/>
       </div>
     );
   }
