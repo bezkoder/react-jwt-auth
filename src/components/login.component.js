@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
+import {Link} from 'react-router-dom'
+import logo from '../sweet_home.svg'
 
 import AuthService from "../services/auth.service";
 
@@ -83,11 +85,10 @@ export default class Login extends Component {
     return (
       <div className="col-md-12">
         <div className="card card-container">
-          <img
-            src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-            alt="profile-img"
-            className="profile-img-card"
+          <img src={logo}
+          alt="welcome-img"
           />
+          <h3 style={{textAlign: 'center', margin:'10px'}}>Welcome back to the Daily Dose</h3>
 
           <Form
             onSubmit={this.handleLogin}
@@ -145,6 +146,9 @@ export default class Login extends Component {
               }}
             />
           </Form>
+          <Link to={"/register"} className="nav-link">
+                  Don't have an account yet?
+            </Link>
         </div>
       </div>
     );

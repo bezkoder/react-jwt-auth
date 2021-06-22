@@ -12,6 +12,7 @@ import {
   BImg
 } from 'bootstrap-4-react';
 import axios from 'axios';
+import Like from './buttons/LikeButton'
 import Follows from '../follow.component';
 import {Link} from 'react-router-dom';
 const style = {
@@ -77,7 +78,6 @@ const style = {
 const Sidebar = props => (
   <React.Fragment>
     <BDiv p="3">
-      <BH4 font="italic" style={style.h}>Follow them</BH4>
       <Follows/>
     </BDiv>
   </React.Fragment>
@@ -100,6 +100,7 @@ const Featured = props => (
                {feature.content.substring(0,20)}...
              </Card.Text>
              <Link to={'/p/'+feature._id}>Continue reading</Link>
+
            </Card.Body>
            <BImg src={feature.photo} flex="auto" display="none lg-block" style={style.featured.card.image} />
          </Card>
@@ -131,7 +132,7 @@ class Post extends Component {
     }
   }
   componentDidMount(){
-    axios.get('http://localhost:8080/api/post/all')
+    axios.get('https://csci4140-group1.herokuapp.com/api/post/all')
         .then((response) => {
             //console.log(response.data);
             this.setState({

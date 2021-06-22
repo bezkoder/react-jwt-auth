@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import AuthService from "../services/auth.service";
 import PostListingByUser from "./home/PostListingByUser";
+import logo from '../user_profile.svg'
 
 export default class Profile extends Component {
   constructor(props) {
@@ -33,6 +34,7 @@ export default class Profile extends Component {
         {(this.state.userReady) ?
         <div>
         <header className="jumbotron">
+          <img src={logo} style={{width: '200px'}}/>
           <h3>
             <strong>{currentUser.username}</strong> Profile
           </h3>
@@ -40,21 +42,21 @@ export default class Profile extends Component {
             <strong>Email:</strong>{" "}
             {currentUser.email}
           </p>
-          <strong>Authorities:</strong>
-        <ul>
+          {/* <strong>Authorities:</strong> */}
+        {/* <ul>
           {currentUser.roles &&
             currentUser.roles.map((role, index) => <li key={index}>{role}</li>)}
-        </ul>
+        </ul> */}
         </header>
         {/* <p>
           <strong>Token:</strong>{" "}
           {currentUser.accessToken.substring(0, 20)} ...{" "}
           {currentUser.accessToken.substr(currentUser.accessToken.length - 20)}
         </p> */}
-        {/* <p>
+        <p>
           <strong>Id:</strong>{" "}
           {currentUser.id}
-        </p> */}
+        </p>
         {/* <p>
           <strong>Email:</strong>{" "}
           {currentUser.email}

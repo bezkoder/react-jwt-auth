@@ -139,7 +139,7 @@ class App extends Component {
 
     return (
       <div>
-        <Header/>
+        {/* {currentUser && (<Header/>)} */}
         <PlayfairDisplay/>
         <nav className="navbar navbar-expand sticky-top navbar-dark bg-dark">
           <div className="navbar-nav mr-auto">

@@ -128,7 +128,7 @@ class PostListingByUser extends Component {
     }
   }
   componentDidMount(){
-    axios.get(`http://localhost:8080/api/post/users/${this.props.username}`)
+    axios.get(`https://csci4140-group1.herokuapp.com/api/post/users/${this.props.username}`)
         .then((response) => {
             //console.log(response.data);
             this.setState({

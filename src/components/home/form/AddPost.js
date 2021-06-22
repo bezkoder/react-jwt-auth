@@ -10,7 +10,6 @@ class AddForm extends Component {
         title: "",
         content: [],
     };
-    // this.handleChange = this.handleChange.bind(this);
   }
   componentDidMount(){
 
@@ -35,7 +34,7 @@ class AddForm extends Component {
     };
 
     axios
-      .post('http://localhost:8080/api/post/add', post)
+      .post('https://csci4140-group1.herokuapp.com/api/post/add', post)
       .then(() => console.log('New Post!'))
       .then(() => window.location.reload(false))
       .catch(err => {
@@ -49,25 +48,26 @@ class AddForm extends Component {
         <Container>
             <form method="POST" onSubmit={this.handleSubmit}>
                 <Row>
-                    <BDiv w="100">
+                    <BDiv style={{marginTop:'40px'}} w="100">
                     <input
                         type="text"
                         className="form-control"
                         name="title"
-                        style={{border:"none", margin:'10px'}}
-                        placeholder="..."
+                        style={{border:"1px solid", margin:'1px'}}
+                        placeholder="Title..."
                         onChange={this.handleInputChange}
                     />
                     </BDiv>
                     <BDiv w="100"></BDiv>
                     <BDiv w="100"><textarea 
                         rows="16" 
-                        style={{border:"none", width:'100%', margin:'10px'}}
+                        style={{border:"1px solid", width:'100%', margin:'1px', borderRadius:'5px'}}
                         name="content" 
                         form="usrform"
+                        placeholder="Write a story..."
                         onChange={this.handleInputChange}
-                    >Enter text here...</textarea></BDiv>
-                    <Col><button class="btn btn-outline-secondary" type="submit">Post it<i class="fas fa-feather-alt"></i></button></Col>
+                    ></textarea></BDiv>
+                    <Col style={{textAlign:'center', margin:'30px'}}><button class="btn btn-outline-secondary" type="submit">Post it<i class="fas fa-feather-alt"></i></button></Col>
                 </Row>
               </form>
         </Container>

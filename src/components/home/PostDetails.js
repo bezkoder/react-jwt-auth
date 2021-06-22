@@ -81,7 +81,7 @@ export default class Edit extends React.Component {
     }
     componentDidMount(){
         const { match: { params } } = this.props;
-        axios.get(`http://localhost:8080/api/post/${params.id}`)
+        axios.get(`https://csci4140-group1.herokuapp.com/api/post/${params.id}`)
             .then((response) => {
                 console.log(response.data);
                 this.setState({
@@ -99,11 +99,11 @@ export default class Edit extends React.Component {
                   
                         <Card.Body display="flex" flex="column" alignItems="start">
                         <BStrong display="inline-block" mb="2" text="primary"> <Link style={{fontSize:'20px'}} to={'/'}><i class="fas fa-long-arrow-alt-left"></i> Return home</Link>  </BStrong>
-                        <BStrong display="inline-block" mb="2" text="primary">{post._id}</BStrong>
+                        <BStrong display="inline-block" mb="2" text="primary">{post.username}</BStrong>
                         <BH3 mb="0" style={style.h}>
                             <BA text="dark" href="#">{post.title}</BA>
                         </BH3>
-                        <BDiv text="muted" mb="1">Nov 11</BDiv>
+                        <BDiv text="muted" mb="1">{post.published}</BDiv>
                         <Card.Text mb="auto">
                             <div>
                             {post.content}
