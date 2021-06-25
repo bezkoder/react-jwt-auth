@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import SubShare from "../share.component"
 import {
   Container,
   Row,
@@ -91,13 +92,14 @@ const Featured = (props) => (
         <Col key={feature._id} id={feature._id} md="6">
           <Card flex="md-row" mb="4" shadow="sm" style={style.featured.card}>
             <Card.Body display="flex" flex="column" alignItems="start">
+           
               <BStrong display="inline-block" mb="2" text="primary">
                 @
                 <Link to={`/user/${feature.authorId}`}>{feature.authorId}</Link>
               </BStrong>
               <BH3 mb="0" style={style.h}>
-                <BA text="dark" href="#">
-                  {feature.title}
+                <BA text="dark">
+                  <Link to={"/p/" + feature._id}>{feature.title}</Link>
                 </BA>
               </BH3>
               <BDiv text="muted" mb="1">
@@ -107,7 +109,8 @@ const Featured = (props) => (
                 {feature.content.substring(0, 20)}...
               </Card.Text>
               <Link to={"/p/" + feature._id}>more details</Link>
-            </Card.Body>
+            </Card.Body> 
+           
             <BImg
               src={feature.photo}
               flex="auto"

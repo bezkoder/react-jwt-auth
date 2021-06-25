@@ -11,6 +11,7 @@ import {
 import {Link} from 'react-router-dom'
 import React from "react";
 import axios from "axios";
+import SubShare from "../share.component";
 const style = {
     h: {
       fontFamily: '"Playfair Display", Georgia, "Times New Roman", serif'
@@ -93,9 +94,7 @@ export default class Edit extends React.Component {
             <div>
                 {this.state.post.map((post)=>{
                         return <div>
-              
                         <Card flex="md-row" mb="4" shadow="sm" style={style.featured.card}>
-                  
                         <Card.Body display="flex" flex="column" alignItems="start">
                         <BStrong display="inline-block" mb="2" text="primary"> <Link style={{fontSize:'20px'}} to={'/'}><i class="fas fa-long-arrow-alt-left"></i> Return home</Link>  </BStrong>
                         <BStrong display="inline-block" mb="2" text="primary">{post.username}</BStrong>
@@ -108,6 +107,7 @@ export default class Edit extends React.Component {
                             {post.content}
                             </div>
                         </Card.Text>
+                        <SubShare/>
                         </Card.Body>
                         <BImg src={this.props.photo} flex="auto" display="none lg-block" style={style.featured.card.image} />
                         </Card>
