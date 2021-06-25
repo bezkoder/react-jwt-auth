@@ -20,21 +20,24 @@ class Follows extends Component {
   }
   componentDidMount(){
     const currentUser = AuthService.getCurrentUser();
-    currentUser && this.setState({user_id:currentUser.id})
-    axios.get('https://csci4140-group1.herokuapp.com/api/users')
-        .then((response) => {
-            this.setState({
-                users : response.data
-            })
-    });
-    axios.get(`https://csci4140-group1.herokuapp.com/api/follow/${currentUser.id}`)
+    currentUser && this.getFollowers(currentUser.id)
+    this.getUsers()
+  }
+  getFollowers =(user_id) => {
+    axios.get(`https://csci4140-group1.herokuapp.com/api/follow/${user_id}`)
     .then((response) => {
         this.setState({
             followed : response.data
         })
     });
-
-
+  }
+  getUsers = () =>{
+    axios.get('https://csci4140-group1.herokuapp.com/api/users')
+    .then((response) => {
+        this.setState({
+            users : response.data
+        })
+    });
   }
   render() {
     const otherUsers = [];
@@ -55,14 +58,6 @@ class Follows extends Component {
         }
       }
     }
-    // for (var i = 0; i < this.state.users.length; i++) {
-    //   var counter = this.state.users[i];
-    //   //console.log(counter)
-    //   if(counter.from===this.state.user_id || counter.to===this.state.user_id){
-    //     following.push(counter);
-    //     console.log(counter);
-    //   }
-    // }
     return (
         <ListGroup>
             <p>Top users</p>

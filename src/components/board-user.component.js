@@ -4,6 +4,8 @@ import UserService from "../services/user.service";
 import PostListingByUser from "./home/PostListingByUser";
 import AuthService from '../services/auth.service';
 import { ListGroup } from 'bootstrap-4-react';
+import FollowUser from "./home/form/FollowUser"
+import UnFollowUser from "./home/form/UnfollowUser"
 
 export default class BoardUser extends Component {
   constructor(props) {
@@ -11,20 +13,18 @@ export default class BoardUser extends Component {
 
     this.state = {
       content: "",
-      followed:[]
+      followed:[],
+      user_id:"",
+      follow_id:"",
+      username:""
     };
   }
 
   componentDidMount() {
     const currentUser = AuthService.getCurrentUser();
-    this.setState({user_id:currentUser.id})
-    axios.get(`https://csci4140-group1.herokuapp.com/api/follow/${currentUser.id}`)
-    .then((response) => {
-        console.log(response.data);
-        this.setState({
-            followed : response.data
-        })
-    });
+    currentUser && this.setState({user_id:currentUser.id})
+    currentUser && this.setState({username:currentUser.username})
+    this.checkFollow();
     UserService.getUserBoard().then(
       response => {
         this.setState({
@@ -44,19 +44,28 @@ export default class BoardUser extends Component {
     );
   }
 
+  checkFollow =()=>{
+    axios.get(`https://csci4140-group1.herokuapp.com/api/follow/${this.props.match.params.id}`)
+    .then((response) => {
+        console.log(response.data);
+        this.setState({
+            followed : response.data
+        })
+    });
+  }
+
   render() {
+    var follow = this.state.followed[0];
+    console.log(follow);
     const { match: { params } } = this.props;
     return (
-      <div className="container">
-        <header className="jumbotron">
+      <div>
+        <header >
           <h3>{this.state.content}</h3>
-          {/* <p>Followers</p>
-          <ListGroup mb="3">
-            <ListGroup.Link href="#">{}</ListGroup.Link>
-        </ListGroup>
-          {this.state.followed.map((user) =>{
-            return 
-          })} */}
+          {this.state.followed.map((data, i)=>{
+            return <UnFollowUser id={data._id}/>
+          })}
+          {this.state.followed.length ===0 && <FollowUser from={this.state.username} to={this.props.match.params.id} />}
           <PostListingByUser username={params.id} />
         </header>
       </div>

@@ -3,33 +3,15 @@ import { Container, Row, Col, BDiv } from 'bootstrap-4-react';
 import axios from 'axios';
 
 class FollowUser extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-        from: "",
-        to: "",
-    };
-  }
-  componentDidMount() {
-    this.setState({
-        from:this.props.from,
-        to:this.props.to
-    })
-  }
 
   handleSubmit = e => {
     e.preventDefault();
 
-    const {from,to} = this.state;
-
-    const follow = {
-      from,
-      to,
-    };
-
     axios
-      .post('https://csci4140-group1.herokuapp.com/api/follow/add', follow)
+      .post('https://csci4140-group1.herokuapp.com/api/follow/add', {
+        "from":this.props.from,
+        "to":this.props.to
+      })
       .then(() => console.log('New friend!'))
       .then(() => window.location.reload(false))
       .catch(err => {
@@ -40,7 +22,8 @@ class FollowUser extends Component {
   render() {
     return (
             <form method="POST" onSubmit={this.handleSubmit}>
-                    <button className="btn btn-outline-secondary" type="submit">Follow <i class="fas fa-feather-alt"></i></button>
+              {this.props.from === this.props.to && <p>Come on, you cannot follow yourself.</p>}
+              {this.props.from !== this.props.to && <button className="btn btn-outline-secondary" type="submit">Follow <i class="fas fa-feather-alt"></i></button>}
             </form>
     );
   }

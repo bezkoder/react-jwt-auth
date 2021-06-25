@@ -10,6 +10,8 @@ import {
   BH3,
   BImg
 } from 'bootstrap-4-react';
+import {Link} from 'react-router-dom';
+import no_post from "../../no_post.svg";
 import axios from 'axios';
 const style = {
   h: {
@@ -108,13 +110,19 @@ const Top = props => (
     <Card  shadow="sm" style={style.featured.card2}>
            <Card.Text display="flex" alignItems="center">
              <BStrong display="inline-block" mb="2" text="primary">Latest posts</BStrong>
-             {/* <Card.Text mb="auto">
-               {feature.content}
-             </Card.Text>
-             <a href={'/p/'+feature._id}>Continue reading</a> */}
            </Card.Text>
     </Card>
     <Featured features={props.data} />
+  </Container>
+)
+const NoPost = props => (
+  <Container>
+    <Card  shadow="sm" style={style.featured.card2}>
+           <Card.Text display="flex" alignItems="center">
+             <BStrong display="inline-block" mb="2" text="primary"><Link to="/post">Write your first post</Link></BStrong>
+           </Card.Text>
+           <img width="50%" src={no_post}/>
+    </Card>
   </Container>
 )
 
@@ -139,7 +147,9 @@ class PostListingByUser extends Component {
   render() {
     return (
       <React.Fragment>
-        <Top data={this.state.post} />
+    
+        {this.state.post.length > 0 &&  <Top data={this.state.post}/> }
+        {this.state.post.length === 0 &&  <NoPost/>}
       </React.Fragment>
     );
   }
