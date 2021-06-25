@@ -40,7 +40,8 @@ const style = {
   },
   featured: {
     card: {
-      height: '250px',
+      height: 'min-content',
+      background:'transparent',
       image: {
         borderRadius: '0 3px 3px 0'
       }
@@ -91,7 +92,7 @@ const Featured = props => (
          return <Col key={feature._id} id={feature._id} md="6">
          <Card flex="md-row" mb="4" shadow="sm" style={style.featured.card}>
            <Card.Body display="flex" flex="column" alignItems="start">
-             <BStrong display="inline-block" mb="2" text="primary">By <Link to={`/user/${feature.authorId}`}>{feature.authorId}</Link></BStrong>
+             <BStrong display="inline-block" mb="2" text="primary">@<Link to={`/user/${feature.authorId}`}>{feature.authorId}</Link></BStrong>
              <BH3 mb="0" style={style.h}>
                <BA text="dark" href="#">{feature.title}</BA>
              </BH3>
@@ -99,7 +100,7 @@ const Featured = props => (
              <Card.Text mb="auto">
                {feature.content.substring(0,20)}...
              </Card.Text>
-             <Link to={'/p/'+feature._id}>Continue reading</Link>
+             <Link to={'/p/'+feature._id}>more details</Link>
 
            </Card.Body>
            <BImg src={feature.photo} flex="auto" display="none lg-block" style={style.featured.card.image} />

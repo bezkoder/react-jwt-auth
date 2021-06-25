@@ -83,7 +83,6 @@ export default class Edit extends React.Component {
         const { match: { params } } = this.props;
         axios.get(`https://csci4140-group1.herokuapp.com/api/post/${params.id}`)
             .then((response) => {
-                console.log(response.data);
                 this.setState({
                     post : response.data
                 })

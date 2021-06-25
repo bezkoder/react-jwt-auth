@@ -9,7 +9,9 @@ import  {
   BA,
 } from 'bootstrap-4-react';
 import AuthService from "./services/auth.service";
-
+import {ThemeProvider} from "styled-components";
+import { GlobalStyles } from "./components/globalStyles";
+import { lightTheme, darkTheme } from "./components/Themes"
 import Login from "./components/login.component";
 import Register from "./components/register.component";
 import Home from "./components/home.component";
@@ -110,13 +112,17 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.logOut = this.logOut.bind(this);
-
+  //   const [theme, setTheme] = useState('light');
     this.state = {
+      theme: 'light',
       showModeratorBoard: false,
       showAdminBoard: false,
       currentUser: undefined,
     };
   }
+//   const themeToggler = () => {
+//     theme === 'light' ? setTheme('dark') : setTheme('light')
+// }
 
   componentDidMount() {
     const user = AuthService.getCurrentUser();
@@ -136,9 +142,10 @@ class App extends Component {
 
   render() {
     const { currentUser, showModeratorBoard, showAdminBoard } = this.state;
-
+    
     return (
       <div>
+      {/* <button onClick={themeToggler}>Switch Theme</button> */}
         {/* {currentUser && (<Header/>)} */}
         <PlayfairDisplay/>
         <nav className="navbar navbar-expand sticky-top navbar-dark bg-dark">
@@ -189,7 +196,7 @@ class App extends Component {
                 </Link>
               </li>
               <li className="nav-item">
-                <a href="/login" className="nav-link" onClick={this.logOut}>
+                <a href="/" className="nav-link" onClick={this.logOut}>
                   LogOut
                 </a>
               </li>

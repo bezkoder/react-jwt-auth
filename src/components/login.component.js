@@ -87,6 +87,7 @@ export default class Login extends Component {
         <div className="card card-container">
           <img src={logo}
           alt="welcome-img"
+          style={{width:'inherit',maxWidth:'240px'}}
           />
           <h3 style={{textAlign: 'center', margin:'10px'}}>Welcome back to the Daily Dose</h3>
 

@@ -20,35 +20,63 @@ class Follows extends Component {
   }
   componentDidMount(){
     const currentUser = AuthService.getCurrentUser();
-    this.setState({user_id:currentUser.id})
+    currentUser && this.setState({user_id:currentUser.id})
     axios.get('https://csci4140-group1.herokuapp.com/api/users')
         .then((response) => {
-            console.log(response.data);
             this.setState({
                 users : response.data
             })
     });
+    axios.get(`https://csci4140-group1.herokuapp.com/api/follow/${currentUser.id}`)
+    .then((response) => {
+        this.setState({
+            followed : response.data
+        })
+    });
+
+
   }
   render() {
-    const otherUser = []
-    this.state.users.map((user)=>{
-      if(!user._id===this.state.user_id){
-        return (console.log("Adding these "+user))
+    const otherUsers = [];
+    const following = [];
+    const final = [];
+    for (var i = 0; i < this.state.users.length; i++) {
+        var counter = this.state.users[i];
+        if(counter._id!=this.state.user_id){
+          otherUsers.push(counter);
+        }
+    }
+    for(var i = 0; i < this.state.users.length; i++){
+      var user = this.state.users[i];
+      for(var j = 0; j < this.state.followed.length; j++){
+        var follow = this.state.followed[j];
+        if( user._id === follow.to){
+          final.push(user);
+        }
       }
-    })
+    }
+    // for (var i = 0; i < this.state.users.length; i++) {
+    //   var counter = this.state.users[i];
+    //   //console.log(counter)
+    //   if(counter.from===this.state.user_id || counter.to===this.state.user_id){
+    //     following.push(counter);
+    //     console.log(counter);
+    //   }
+    // }
     return (
         <ListGroup>
             <p>Top users</p>
             <img src={logo}/>
-            {this.state.users.map((user) =>{
-
+            {otherUsers.map((user) =>{
                 return (
                     <ListGroup.Item id={user._id} key={user._id} ><Link to={`/user/${user.username}`}>@{user.username}</Link></ListGroup.Item>
                     )
             })}
+          
       </ListGroup>
     );
   }
 }
+
 
 export default Follows;

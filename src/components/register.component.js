@@ -128,6 +128,7 @@ export default class Register extends Component {
         <div className="card card-container">
           <img
             src={logo}
+            style={{width:'inherit',maxWidth:'240px'}}
             alt="welcome-img"
           />
 
