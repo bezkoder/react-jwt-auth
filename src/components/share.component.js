@@ -17,7 +17,9 @@ import {
 } from "react-share";
 import SubShareCSS from "./CSS";
 
-
+/**
+ * Author https://codesandbox.io/u/steadylearner
+ */
 class SubShare extends Component {
 
   render() {
