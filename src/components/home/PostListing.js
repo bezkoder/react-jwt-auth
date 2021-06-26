@@ -15,6 +15,7 @@ import {
 import axios from "axios";
 import Like from "./buttons/LikeButton";
 import Follows from "../follow.component";
+import { InputGroup, Dropdown, Form } from 'bootstrap-4-react';
 import { Link } from "react-router-dom";
 const style = {
   h: {
@@ -144,6 +145,7 @@ class Post extends Component {
     super();
     this.state = {
       post: [],
+      search:null
     };
   }
   componentDidMount() {
@@ -156,10 +158,40 @@ class Post extends Component {
         });
       });
   }
+  handleSearch=(event)=>{
+    let keyword = event.target.value;
+    this.setState({search:keyword})
+  }
+  handleSuggestionClick=(event)=>{
+    let keyword = event.target.value;
+    this.setState({search:keyword})
+  }
+  
   render() {
+
+    const posts = this.state.post.filter((data)=>{
+      if(this.state.search == null)
+          return data
+      else if(data.title.toLowerCase().includes(this.state.search.toLowerCase()) || data.authorId.toLowerCase().includes(this.state.search.toLowerCase())){
+          return data
+      }
+    })
+
     return (
       <React.Fragment>
-        <Top data={this.state.post} />
+          <Row>
+          <Col col="12 md-8">
+            <InputGroup style={{marginTop:"20px"}} mb="1">
+            <Form.Input value={this.state.search} placeholder="Search post" onChange={(e)=>this.handleSearch(e)} type="text" />
+          </InputGroup>
+            <Featured features={posts} />
+          </Col>
+          <Col col="6 md-4">
+            <Sidebar />
+          </Col>
+        </Row>
+
+        {/* <Top data={posts} /> */}
       </React.Fragment>
     );
   }
