@@ -34,12 +34,20 @@ Or React with Spring Boot Server:
 For more detail, please visit:
 > [React (without Redux) JWT Authentication & Authorization example](https://bezkoder.com/react-jwt-auth/)
 
+> [React - How to Logout when Token is expired](https://www.bezkoder.com/react-logout-token-expired/)
+
 > [React Redux JWT Authentication & Authorization example](https://bezkoder.com/react-redux-jwt-auth/)
+
+> [React Hooks: JWT Authentication & Authorization example](https://bezkoder.com/react-hooks-jwt-auth/)
+
+> [React + Redux + Hooks: JWT Authentication & Authorization example](https://bezkoder.com/react-hooks-redux-login-registration-example/)
 
 Related Posts:
 > [In-depth Introduction to JWT-JSON Web Token](https://bezkoder.com/jwt-json-web-token/)
 
 > [React.js CRUD example to consume Web API](https://bezkoder.com/react-crud-web-api/)
+
+> [React Pagination example](https://bezkoder.com/react-pagination-material-ui/)
 
 > [React File Upload with Axios and Progress Bar to Rest API](https://bezkoder.com/react-file-upload-axios/)
 
@@ -47,6 +55,33 @@ Fullstack (JWT Authentication & Authorization example):
 > [React + Spring Boot](https://bezkoder.com/spring-boot-react-jwt-auth/)
 
 > [React + Node.js Express](https://bezkoder.com/react-express-authentication-jwt/)
+
+CRUD with Node.js Express:
+> [React.js + Node.js Express + MySQL](https://bezkoder.com/react-node-express-mysql/)
+
+> [React.js + Node.js Express + PostgreSQL](https://bezkoder.com/react-node-express-postgresql/)
+
+> [React.js + Node.js Express + MongoDB](https://bezkoder.com/react-node-express-mongodb-mern-stack/)
+
+CRUD with Spring Boot:
+> [React.js + Spring Boot + MySQL](https://bezkoder.com/react-spring-boot-crud/)
+
+> [React.js + Spring Boot + PostgreSQL](https://bezkoder.com/spring-boot-react-postgresql/)
+
+> [React.js + Spring Boot + MongoDB](https://bezkoder.com/react-spring-boot-mongodb/)
+
+CRUD with Django:
+> [React.js + Django Rest Framework](https://bezkoder.com/django-react-axios-rest-framework/)
+
+Serverless:
+> [React Firebase CRUD App with Realtime Database](https://bezkoder.com/react-firebase-crud/)
+
+> [React Firestore CRUD App example | Firebase Cloud Firestore](https://bezkoder.com/react-firestore-crud/)
+
+Integration (run back-end & front-end on same server/port)
+> [Integrate React with Spring Boot](https://bezkoder.com/integrate-reactjs-spring-boot/)
+
+> [Integrate React with Node.js Express](https://bezkoder.com/integrate-react-express-same-server-port/)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
