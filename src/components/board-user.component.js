@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import UserService from "../services/user.service";
+import EventBus from "../common/EventBus";
 
 export default class BoardUser extends Component {
   constructor(props) {
@@ -27,6 +28,10 @@ export default class BoardUser extends Component {
             error.message ||
             error.toString()
         });
+
+        if (error.response && error.response.status === 401) {
+          EventBus.dispatch("logout");
+        }
       }
     );
   }
