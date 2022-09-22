@@ -5,6 +5,8 @@ import CheckButton from "react-validation/build/button";
 
 import AuthService from "../services/auth.service";
 
+import { withRouter } from '../common/with-router';
+
 const required = value => {
   if (!value) {
     return (
@@ -15,7 +17,7 @@ const required = value => {
   }
 };
 
-export default class Login extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
     this.handleLogin = this.handleLogin.bind(this);
@@ -55,7 +57,7 @@ export default class Login extends Component {
     if (this.checkBtn.context._errors.length === 0) {
       AuthService.login(this.state.username, this.state.password).then(
         () => {
-          this.props.history.push("/profile");
+          this.props.router.navigate("/profile");
           window.location.reload();
         },
         error => {
@@ -150,3 +152,5 @@ export default class Login extends Component {
     );
   }
 }
+
+export default withRouter(Login);
